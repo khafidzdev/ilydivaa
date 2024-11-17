@@ -1,0 +1,204 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+}
+
+/* Background */
+#background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Stars */
+#stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 0;
+}
+
+/* Create twinkling stars */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    animation: twinkling 2s infinite;
+}
+
+/* Comets */
+#comets {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.comet {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px white;
+    animation: cometTrail 5s linear infinite;
+}
+
+@keyframes twinkling {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes cometTrail {
+    0% { transform: translate(0, 0); opacity: 1; }
+    100% { transform: translate(100vw, 100vh); opacity: 0; }
+}
+
+/* Flower Container */
+#flower-container {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Tulip */
+.tulip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Stem */
+.stem {
+    width: 12px;
+    height: 150px;
+    background: linear-gradient(to bottom, #228B22, #006400);
+    margin: 0 auto;
+    border-radius: 10px;
+    animation: growStem 3s ease-in-out forwards;
+}
+
+/* Leaves */
+.leaves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: growLeaves 2s 2s forwards;
+}
+
+.leaf {
+    width: 120px;
+    height: 70px;
+    background: linear-gradient(to bottom, #98FB98, #228B22);
+    border-radius: 50%;
+    position: absolute;
+    transform-origin: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.leaf-left {
+    transform: rotate(-45deg) translate(-50%, -50%);
+    left: -80px;
+}
+
+.leaf-right {
+    transform: rotate(45deg) translate(-50%, -50%);
+    right: -80px;
+}
+
+/* Bloom */
+.bloom {
+    position: absolute;
+    top: -110px; /* Ensures the flower is above the stem */
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    animation: bloomFlower 4s 2s forwards;
+}
+
+/* Petals */
+.petals {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+}
+
+.petal {
+    width: 80px;
+    height: 110px;
+    background: radial-gradient(circle, #FF1493, #FF69B4);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: bottom;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.petal-1 { transform: rotate(0deg); }
+.petal-2 { transform: rotate(90deg); }
+.petal-3 { transform: rotate(180deg); }
+.petal-4 { transform: rotate(270deg); }
+
+.center {
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, #FFD700, #FF8C00);
+    border-radius: 50%;
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes growStem {
+    from { height: 0; }
+    to { height: 150px; }
+}
+
+@keyframes growLeaves {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes bloomFlower {
+    from { transform: translateX(-50%) scale(0); }
+    to { transform: translateX(-50%) scale(1); }
+}
+
+/* Styling for the message */
+#message {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    font-family: 'Arial', sans-serif;
+    color: #FF1493;
+    opacity: 0;
+    text-align: center;
+    animation: showMessage 2s 8s forwards; /* Adjusted delay */
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes showMessage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
